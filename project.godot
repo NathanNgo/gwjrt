@@ -23,6 +23,7 @@ enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
 
 player_objects=""
 enemies=""
+obstacle=""
 
 [input]
 

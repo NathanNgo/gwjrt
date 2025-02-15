@@ -22,6 +22,7 @@ enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
 [global_group]
 
 player_objects=""
+enemies=""
 
 [input]
 

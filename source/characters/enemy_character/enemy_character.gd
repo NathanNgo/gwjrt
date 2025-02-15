@@ -1,6 +1,6 @@
 class_name EnemyCharacter extends CharacterBody2D
 
-static var PLAYER_GROUP = "player_objects"
+static var ENEMY_GROUP = "enemies"
 
 signal body_hit(damage: int)
 

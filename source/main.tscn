@@ -1,15 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpx6mety5bqcw"]
+[gd_scene load_steps=4 format=3 uid="uid://cpx6mety5bqcw"]
 
 [ext_resource type="Script" path="res://source/main.gd" id="1_h5u32"]
 [ext_resource type="PackedScene" uid="uid://cxr5vmhcdk1jp" path="res://source/characters/player_character/player_character.tscn" id="1_mc5tm"]
 [ext_resource type="PackedScene" uid="uid://bvk41vw65rwxo" path="res://source/line/line.tscn" id="2_h0bad"]
-[ext_resource type="PackedScene" uid="uid://purqtlnam4ek" path="res://source/characters/enemy_character/enemy_character.tscn" id="4_jaa0b"]
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("line", "player_one", "player_two")]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("line", "player_one", "player_two", "enemies_container")]
 script = ExtResource("1_h5u32")
 line = NodePath("Line")
 player_one = NodePath("PlayerCharacter1")
 player_two = NodePath("PlayerCharacter2")
+enemies_container = NodePath("EnemiesContainer")
 
 [node name="PlayerCharacter1" parent="." instance=ExtResource("1_mc5tm")]
 position = Vector2(310, 248)
@@ -21,5 +21,6 @@ player_type = 1
 [node name="Line" parent="." instance=ExtResource("2_h0bad")]
 position = Vector2(472, 199)
 
-[node name="EnemyCharacter" parent="." instance=ExtResource("4_jaa0b")]
-position = Vector2(566, 406)
+[node name="EnemiesContainer" type="Node2D" parent="."]
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]

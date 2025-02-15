@@ -6,6 +6,10 @@ enum Controls { LEFT, RIGHT, UP, DOWN, INTERACT }
 
 static var PLAYER_GROUP = "player_objects"
 
+@export var _collision_area: Area2D
+@export var _player_one_sprite: Sprite2D
+@export var _player_two_sprite: Sprite2D
+
 @export var player_type := Player.FIRST
 @export var speed := 400
 
@@ -31,6 +35,17 @@ var control_schemes := {
 @onready var selected_scheme: Dictionary = control_schemes[player_type]
 
 
+func _ready() -> void:
+	_collision_area.body_entered.connect(_on_body_entered)
+	_player_one_sprite.hide()
+	_player_two_sprite.hide()
+	
+	if player_type == Player.FIRST:
+		_player_one_sprite.show()
+	elif player_type == Player.SECOND:
+		_player_two_sprite.show()
+
+
 func _physics_process(_delta: float) -> void:
 	var direction = (
 		Vector2(
@@ -44,3 +59,8 @@ func _physics_process(_delta: float) -> void:
 
 	velocity = direction * speed
 	move_and_slide()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemies"):
+		body.queue_free()
